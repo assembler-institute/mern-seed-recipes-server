@@ -24,6 +24,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: create env file
+        run: |
+          touch .env
+          echo BCRYPT_SALT_ROUNDS =${{ secrets.BCRYPT_SALT_ROUNDS }} >> .env
+          echo JWT_SECRET =${{ secrets.JWT_SECRET }} >> .env
+          echo MONGO_DB_URL_DEVELOPMENT =${{ secrets.MONGO_DB_URL_DEVELOPMENT }} >> .env
+          echo MONGO_DB_URL_TEST =${{ secrets.MONGO_DB_URL_TEST }} >> .env
+          echo MONGO_DB_URL_PRODUCTION =${{ secrets.MONGO_DB_URL_PRODUCTION }} >> .env
       - run: npm ci
       - run: npm run lint:js
       - run: npm run lint:format:check
