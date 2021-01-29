@@ -6,7 +6,7 @@
   "author": "Dani Lucaci <danilucaci@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/assembler-school/mern-seed-recipes.git"
+    "url": "https://github.com/assembler-school/mern-seed-recipes-server.git"
   },
   "type": "commonjs",
   "keywords": [
