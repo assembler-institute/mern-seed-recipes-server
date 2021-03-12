@@ -1,7 +1,7 @@
 {
   "name": "mern-server",
   "version": "1.0.0",
-  "description": "Server app made with React.js and Node.js for the Assembler School MERN Recipes App by @danilucaci.",
+  "description": "Server app for the Assembler School MERN Recipes Project.",
   "private": true,
   "author": "Dani Lucaci <danilucaci@gmail.com>",
   "repository": {
