@@ -1,23 +1,24 @@
 const db = require("../models");
+const { createAuthUser } = require("../services/auth");
 
 const USERS = [
   {
-    name: "Ana Maria",
-    lastname: "Perez",
+    firstName: "Ana Maria",
+    lastName: "Perez",
     email: "ana@mail.com",
-    password: "$2b$12$p0qK3HaiBvA1XIDXWaVS1e2Q7vFdAyGYZvlk/gaEo5Qk8RGBortMa",
+    password: "ana-maria-perez",
   },
   {
-    name: "Alex",
-    lastname: "Marín",
+    firstName: "Alex",
+    lastName: "Marín",
     email: "alexm@mail.com",
-    password: "$2b$12$wo2esw6AEnTNGvXXjxsGwO3I.kgS1CM86MnZgd/xrqixzMSwzW1KW",
+    password: "alex-marin",
   },
   {
-    name: "Sergio",
-    lastname: "Rio Mayor",
+    firstName: "Sergio",
+    lastName: "Rio Mayor",
     email: "sergio22@mail.com",
-    password: "$2b$12$dkZWNHosiTIKQBl8famUM.f2Te6Gq5/EzpQm6DDn71lqjZY79c71C",
+    password: "sergio-rio-mayor",
   },
 ];
 
@@ -136,6 +137,14 @@ function getRandomItem(arr) {
 }
 
 async function seed() {
+  const authUsers = await Promise.all(
+    USERS.map((user) =>
+      createAuthUser({ email: user.email, password: user.password }),
+    ),
+  );
+
+  console.log(authUsers);
+
   const newUsers = await db.User.insertMany(USERS);
 
   const newUsersIDs = newUsers.map((user) => user._id);

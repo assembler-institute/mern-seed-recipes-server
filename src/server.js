@@ -4,15 +4,12 @@ const { json } = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
 
-require("dotenv").config();
-
-const app = express();
-
 const errorMiddleware = require("./middleware/error-middleware");
 const userRouter = require("./routes/user-routes");
 const recipesRouter = require("./routes/recipes-routes");
+const config = require("./config");
 
-const auth = require("./utils/auth/passport");
+const app = express();
 
 app.use(morgan("dev"));
 app.use(helmet());
@@ -20,11 +17,9 @@ app.use(json());
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: config.client.URL,
   }),
 );
-
-app.use(auth.initialize);
 
 app.use(userRouter);
 app.use(recipesRouter);

@@ -12,9 +12,9 @@ connect()
     await clearCollections();
     await seed();
 
-    app.listen(config.port, () => {
+    app.listen(config.app.port, () => {
       config.logger.debug(
-        `Server listening on http://localhost:${config.port}`,
+        `Server listening on http://localhost:${config.app.port}`,
       );
     });
   })

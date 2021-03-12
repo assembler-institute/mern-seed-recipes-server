@@ -13,4 +13,6 @@ function getSanitizedUser(userObj) {
   return sanitizedUser;
 }
 
-module.exports = getSanitizedUser;
+module.exports = {
+  getSanitizedUser: getSanitizedUser,
+};
